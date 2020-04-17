@@ -3,6 +3,7 @@ import commonjs from 'rollup-plugin-commonjs';
 import external from 'rollup-plugin-peer-deps-external';
 import resolve from 'rollup-plugin-node-resolve';
 import url from 'rollup-plugin-url';
+import css from 'rollup-plugin-css-only';
 
 import pkg from './package.json';
 
@@ -28,5 +29,6 @@ export default {
     }),
     resolve(),
     commonjs(),
+    css({ output: null }),
   ],
 };
