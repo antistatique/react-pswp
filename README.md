@@ -1,6 +1,6 @@
 # 🖼️🖼️🖼️ react-pswp
 
-> Pictures dedicated React components
+> Flexible React wrapper for PhotoSwipe
 
 [![NPM](https://img.shields.io/npm/v/react-pswp.svg)](https://www.npmjs.com/package/react-pswp) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
