@@ -2,15 +2,14 @@ import { css } from '@emotion/core';
 
 import skin from '../../assets/skin';
 
-const colors = {
+const defaultTheme = {
   foreground: '#000',
   background: '#fff',
 };
-const icons = skin(colors.foreground);
 
-export default css`
+export default (theme = defaultTheme) => css`
   .pswp__bg {
-    background: ${colors.background};
+    background: ${theme.background};
   }
 
   .pswp__container_transition {
@@ -66,7 +65,9 @@ export default css`
   .pswp__button--arrow--right:before {
     width: 44px;
     height: 44px;
-    background: url("data:image/svg+xml,${icons}") 0 0 no-repeat;
+    background: url("data:image/svg+xml,${skin(
+      theme.foreground,
+    )}") 0 0 no-repeat;
     background-size: 264px 88px;
   }
 
@@ -138,7 +139,7 @@ export default css`
     top: 35px;
     width: 32px;
     height: 30px;
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: ${theme.background};
   }
 
   .pswp__button--arrow--left:before {
@@ -165,7 +166,7 @@ export default css`
     width: 100%;
     height: 100%;
     padding: 10px;
-    background: ${colors.background};
+    background: ${theme.background};
     transition: opacity 0.25s ease-out;
     z-index: 1600;
     opacity: 0;
@@ -182,7 +183,7 @@ export default css`
     top: 56px;
     right: 44px;
     width: auto;
-    background: ${colors.background};
+    background: ${theme.background};
     transform: translateY(6px);
     transition: transform 0.25s;
     z-index: 1620;
@@ -196,13 +197,13 @@ export default css`
     padding: 8px 12px;
     font-size: 14px;
     line-height: 18px;
-    color: ${colors.background};
+    color: ${theme.background};
     text-decoration: none;
   }
 
   .pswp__share-tooltip a:hover {
     text-decoration: none;
-    color: ${colors.background};
+    color: ${theme.background};
   }
 
   .pswp__share-tooltip a:first-of-type {
@@ -236,12 +237,12 @@ export default css`
     width: 0;
     height: 0;
     border: 6px solid transparent;
-    border-bottom-color: ${colors.foreground};
+    border-bottom-color: ${theme.foreground};
     pointer-events: none;
   }
 
   a.pswp__share--download:hover {
-    background: ${colors.foreground};
+    background: ${theme.foreground};
   }
 
   /* 3. Index indicator ("1 of X" counter) */
@@ -253,7 +254,7 @@ export default css`
     padding: 0 10px;
     font-size: 13px;
     line-height: 44px;
-    color: ${colors.foreground};
+    color: ${theme.foreground};
     opacity: 0.75;
   }
 
@@ -268,7 +269,7 @@ export default css`
 
   .pswp__caption small {
     font-size: 11px;
-    color: ${colors.foreground};
+    color: ${theme.foreground};
   }
 
   .pswp__caption__center {
@@ -276,9 +277,10 @@ export default css`
     padding: 10px;
     font-size: 13px;
     line-height: 20px;
-    color: ${colors.foreground};
+    color: ${theme.foreground};
     text-align: left;
     max-width: 420px;
+    text-align: center;
   }
 
   .pswp__caption--empty {
@@ -358,7 +360,7 @@ export default css`
     height: 14px;
     margin: 0;
     background: none;
-    border: 2px solid ${colors.foreground};
+    border: 2px solid ${theme.foreground};
     box-sizing: border-box;
     border-radius: 50%;
     border-left-color: transparent;
@@ -410,7 +412,7 @@ export default css`
 
   /* top background bar with buttons and "1 of X" indicator */
   .pswp__top-bar {
-    background: ${colors.background} !important;
+    background: ${theme.background} !important;
     position: absolute;
     top: 0;
     left: 0;
@@ -434,13 +436,13 @@ export default css`
 
   .pswp__top-bar,
   .pswp__caption {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: ${theme.background};
   }
 
   /* pswp__ui--fit class is added when main image "fits" between top bar and bottom bar (caption) */
   .pswp__ui--fit .pswp__top-bar,
   .pswp__ui--fit .pswp__caption {
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: ${theme.background};
   }
 
   /* pswp__ui--idle class is added when mouse isn't moving for several seconds (JS option timeToIdle) */

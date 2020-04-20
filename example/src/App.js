@@ -1,61 +1,56 @@
-import React, { useState } from 'react';
-import { PhotoSwipe } from 'react-pswp';
+/* eslint-disable import/no-extraneous-dependencies */
+import React from 'react';
+import Highlight from 'react-highlight';
 
-import 'react-pswp/dist/index.css';
+import DocContainer from './DocContainer';
+import DocGallery from './DocGallery';
+import DocPhotoSwipe from './DocPhotoSwipe';
+import DocExample from './DocExample';
 
-const App = () => {
-  const [index, setIndex] = useState(0);
-  const [open, setOpen] = useState(false);
+const App = () => (
+  <>
+    <div>
+      <h1 className="text-center font-medium text-3xl bg-gray-900 text-white py-4">
+        react-<span className="text-teal-300">pswp</span>
+      </h1>
+    </div>
 
-  const demo = [
-    '5iFZBM7qgWc',
-    'P7fVUSY-5ws',
-    '_d0zgyMmYT8',
-    'aaC9NWEhHjI',
-    'HV96oPiv_2g',
-    '6CcoF7h9h-k',
-    '7LsuYqkvIUM',
-    'iq96SvUkuxQ',
-    'NOWC4AtCIC4',
-    'NSSsyfAQW2g',
-    'oqYHtXrLXLo',
-  ];
-
-  const container = demo.map(id => ({
-    src: `https://source.unsplash.com/${id}/1000x1000`,
-    w: 1000,
-    h: 1000,
-  }));
-
-  const options = {};
-
-  const handleClick = (e, i) => {
-    e.preventDefault();
-    setIndex(i);
-    if (!open) setOpen(true);
-  };
-
-  return (
-    <>
-      {demo.map((id, i) => (
+    <div className="max-w-screen-md mx-auto px-5">
+      <p className="text-lg py-12">
+        “<code>react-pswp</code> is a flexible React wrapper for{' '}
         <a
-          href={container[i].src}
-          key={`thumb-${i}`}
-          onClick={e => handleClick(e, i)}
+          href="https://photoswipe.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline"
         >
-          <img src={`https://source.unsplash.com/${id}/100x100`} alt="thumb" />
+          Photoswipe
         </a>
-      ))}
+        ”.
+      </p>
 
-      <PhotoSwipe
-        container={container}
-        onIndexChange={i => setIndex(i)}
-        onOpenChange={o => setOpen(o)}
-        index={index}
-        open={open}
-        options={options}
-      />
-    </>
-  );
-};
+      <h2 className="text-2xl font-medium mb-2">Install</h2>
+
+      <Highlight className="bash rounded mb-12">
+        $ yarn add react-pswp
+      </Highlight>
+
+      <h2 className="text-2xl font-medium mb-2 mt-20">Container</h2>
+
+      <DocContainer />
+
+      <h2 className="text-2xl font-medium mb-2 mt-20">Gallery</h2>
+
+      <DocGallery />
+
+      <h2 className="text-2xl font-medium mb-2 mt-20">PhotoSwipe</h2>
+
+      <DocPhotoSwipe />
+
+      <h2 className="text-2xl font-medium mb-2 mt-20">Full Example</h2>
+
+      <DocExample />
+    </div>
+  </>
+);
 export default App;

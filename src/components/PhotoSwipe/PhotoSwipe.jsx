@@ -19,6 +19,7 @@ const PhotoSwipe = ({
   onIndexChange,
   onOpenChange,
   options = {},
+  theme,
 }) => {
   const pswp = useRef(null);
   const wrapper = useRef(null);
@@ -75,7 +76,7 @@ const PhotoSwipe = ({
 
   return (
     <>
-      <Global styles={styles} />
+      <Global styles={styles(theme)} />
       <PhotoSwipeWrapper setRef={wrapper}>{children}</PhotoSwipeWrapper>
     </>
   );
@@ -88,6 +89,7 @@ PhotoSwipe.propTypes = {
   onIndexChange: PropTypes.func,
   onOpenChange: PropTypes.func,
   open: PropTypes.bool,
+  theme: PropTypes.object,
   options: PropTypes.object,
 };
 
