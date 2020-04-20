@@ -1,4 +1,4 @@
-# 📐🖼️ react-srcset
+# 🖼️🖼️🖼️ react-pswp
 
 > Pictures dedicated React components
 
