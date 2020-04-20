@@ -15,15 +15,55 @@ npm install --save react-pswp
 ## Usage
 
 ```jsx
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react';
+import { Gallery, PhotoSwipe } from 'react-pswp';
 
-// TBD
+import 'react-pswp/dist/index.css';
+
+const MyApp = () => {
+  const [index, setIndex] = useState(null);
+  const [open, setOpen] = useState(false);
+
+  const myPicture = [ /* you image set */ ]
+
+  const container = myPicture.map((picture, i) => ({
+    uid: i,
+    src: picture.original,
+    msrc: picture.thumbnail,
+    w: picture.width,
+    h: picture.height,
+    title: `Picture by ${picture.author}`,
+  }));
+
+  useEffect(() => {
+    if (!open && index !== null) setOpen(true);
+  }, [index]);
+
+  return (
+    <Gallery
+      container={container}
+      onClick={setIndex}
+      wrapperClass="flex flex-wrap"
+      itemClass="p-1 w-1/6"
+      imgClass="inline-block w-full"
+    />
+
+    <PhotoSwipe
+      container={container}
+      onIndexChange={setIndex}
+      onOpenChange={setOpen}
+      index={index}
+      open={open}
+      theme={{
+        foreground: '#1A202C',
+        background: '#81E6D9',
+      }}
+    />
+  )
+}
 ```
 
-
-
 For more information, 📗 **[read the interactive documentation](https://antistatique.github.io/react-pswp)**
-
 
 
 ## Contribute

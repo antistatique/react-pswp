@@ -66,7 +66,7 @@ const PreviewProvider = () => {
 
       <Highlight className="javascript rounded mb-6 text-sm">
         {`import React, { useState, useEffect } from 'react';
-import { Gallery } from 'react-pswp';
+import { Gallery, PhotoSwipe } from 'react-pswp';
 
 import 'react-pswp/dist/index.css';
 
