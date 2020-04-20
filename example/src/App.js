@@ -50,6 +50,27 @@ const App = () => (
       <h2 className="text-2xl font-medium mb-2 mt-20">Full Example</h2>
 
       <DocExample />
+
+      <address className="text-center text-gray-700 my-12">
+        Made with 💛 by{' '}
+        <a
+          href="https://antistatique.net"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-pink-600 underline"
+        >
+          Antistatique
+        </a>{' '}
+        |{' '}
+        <a
+          href="https://github.com/antistatique/react-pswp"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-teal-600 underline"
+        >
+          Github
+        </a>
+      </address>
     </div>
   </>
 );
